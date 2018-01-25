@@ -1,11 +1,11 @@
 use v6.c;
-unit module P5length:ver<0.0.1>;
+unit module P5length:ver<0.0.2>;
 
 proto sub length(|) is export {*}
 multi sub length(--> Int:D) { length(CALLERS::<$_>) }
 multi sub length(Any:U $type) { $type }
 multi sub length(Any:D $string --> Int:D) { length($string.Str) }
-multi sub length(Str:D $string --> Int:D) { $string.Str.chars }
+multi sub length(Str:D $string --> Int:D) { $string.chars }
 
 =begin pod
 
