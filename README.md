@@ -19,7 +19,25 @@ SYNOPSIS
 DESCRIPTION
 ===========
 
-This module tries to mimic the behaviour of the `length` of Perl 5 as closely as possible.
+This module tries to mimic the behaviour of the `length` function of Perl 5 as closely as possible.
+
+ORIGINAL PERL 5 DOCUMENTATION
+=============================
+
+    length EXPR
+    length  Returns the length in characters of the value of EXPR. If EXPR is
+            omitted, returns the length of $_. If EXPR is undefined, returns
+            "undef".
+
+            This function cannot be used on an entire array or hash to find
+            out how many elements these have. For that, use "scalar @array"
+            and "scalar keys %hash", respectively.
+
+            Like all Perl character operations, length() normally deals in
+            logical characters, not physical bytes. For how many bytes a
+            string encoded as UTF-8 would take up, use
+            "length(Encode::encode_utf8(EXPR))" (you'll have to "use Encode"
+            first). See Encode and perlunicode.
 
 PORTING CAVEATS
 ===============
