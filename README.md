@@ -1,9 +1,7 @@
-[![Build Status](https://travis-ci.org/lizmat/P5length.svg?branch=master)](https://travis-ci.org/lizmat/P5length)
-
 NAME
 ====
 
-P5length - Implement Perl 5's length() built-in
+P5length - Implement Perl's length() built-in
 
 SYNOPSIS
 ========
@@ -19,7 +17,7 @@ SYNOPSIS
 DESCRIPTION
 ===========
 
-This module tries to mimic the behaviour of the `length` function of Perl 5 as closely as possible.
+This module tries to mimic the behaviour of the `length` function of Perl as closely as possible.
 
 ORIGINAL PERL 5 DOCUMENTATION
 =============================
@@ -42,9 +40,9 @@ ORIGINAL PERL 5 DOCUMENTATION
 PORTING CAVEATS
 ===============
 
-Since the Perl 5 documentation mentions `characters` rather than codepoints, `length` will return the number of characters, as seen using Normalization Form Grapheme (NFG).
+Since the Perl documentation mentions `characters` rather than codepoints, `length` will return the number of characters, as seen using Normalization Form Grapheme (NFG).
 
-`length` in Perl 5 is supposed to return `undef` when given `undef`. Since undefined values are type objects in Perl 6, and it looks like `length` is simply returning what it was given in the undefined case, it felt appropriate to simply return the given type object rather than `Nil`.
+`length` in Perl is supposed to return `undef` when given `undef`. Since undefined values are type objects in Raku, and it looks like `length` is simply returning what it was given in the undefined case, it felt appropriate to simply return the given type object rather than `Nil`.
 
 AUTHOR
 ======
@@ -56,9 +54,9 @@ Source can be located at: https://github.com/lizmat/P5length . Comments and Pull
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2018 Elizabeth Mattijsen
+Copyright 2018-2019 Elizabeth Mattijsen
 
-Re-imagined from Perl 5 as part of the CPAN Butterfly Plan.
+Re-imagined from Perl as part of the CPAN Butterfly Plan.
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 

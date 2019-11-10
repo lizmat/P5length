@@ -2,6 +2,9 @@ Revision history for P5length
 
 {{$NEXT}}
 
+0.0.5  2019-11-10T14:21:25+01:00
+    - changed Perl 6 to Raku, and Perl 5 to Perl
+
 0.0.4  2018-05-21T15:31:27+02:00
     - Added original Perl 5 documentation
     - Added authority information

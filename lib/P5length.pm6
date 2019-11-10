@@ -1,6 +1,6 @@
 use v6.c;
 
-unit module P5length:ver<0.0.4>:auth<cpan:ELIZABETH>;
+unit module P5length:ver<0.0.5>:auth<cpan:ELIZABETH>;
 
 proto sub length(|) is export {*}
 multi sub length(--> Int:D) { length(CALLERS::<$_>) }
@@ -12,7 +12,7 @@ multi sub length(Str:D $string --> Int:D) { $string.chars }
 
 =head1 NAME
 
-P5length - Implement Perl 5's length() built-in
+P5length - Implement Perl's length() built-in
 
 =head1 SYNOPSIS
 
@@ -27,7 +27,7 @@ P5length - Implement Perl 5's length() built-in
 =head1 DESCRIPTION
 
 This module tries to mimic the behaviour of the C<length> function of
-Perl 5 as closely as possible.
+Perl as closely as possible.
 
 =head1 ORIGINAL PERL 5 DOCUMENTATION
 
@@ -48,12 +48,12 @@ Perl 5 as closely as possible.
 
 =head1 PORTING CAVEATS
 
-Since the Perl 5 documentation mentions C<characters> rather than codepoints,
+Since the Perl documentation mentions C<characters> rather than codepoints,
 C<length> will return the number of characters, as seen using Normalization
 Form Grapheme (NFG).
 
-C<length> in Perl 5 is supposed to return C<undef> when given C<undef>.  Since
-undefined values are type objects in Perl 6, and it looks like C<length> is
+C<length> in Perl is supposed to return C<undef> when given C<undef>.  Since
+undefined values are type objects in Raku, and it looks like C<length> is
 simply returning what it was given in the undefined case, it felt appropriate
 to simply return the given type object rather than C<Nil>.
 
@@ -66,9 +66,9 @@ Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018 Elizabeth Mattijsen
+Copyright 2018-2019 Elizabeth Mattijsen
 
-Re-imagined from Perl 5 as part of the CPAN Butterfly Plan.
+Re-imagined from Perl as part of the CPAN Butterfly Plan.
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
