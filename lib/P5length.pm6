@@ -1,6 +1,6 @@
-use v6.c;
+use v6.d;
 
-unit module P5length:ver<0.0.5>:auth<cpan:ELIZABETH>;
+unit module P5length:ver<0.0.6>:auth<cpan:ELIZABETH>;
 
 proto sub length(|) is export {*}
 multi sub length(--> Int:D) { length(CALLERS::<$_>) }
@@ -12,7 +12,7 @@ multi sub length(Str:D $string --> Int:D) { $string.chars }
 
 =head1 NAME
 
-P5length - Implement Perl's length() built-in
+Raku port of Perl's length() built-in
 
 =head1 SYNOPSIS
 
@@ -26,8 +26,8 @@ P5length - Implement Perl's length() built-in
 
 =head1 DESCRIPTION
 
-This module tries to mimic the behaviour of the C<length> function of
-Perl as closely as possible.
+This module tries to mimic the behaviour of Perl's C<length> built-in
+as closely as possible in the Raku Programming Language.
 
 =head1 ORIGINAL PERL 5 DOCUMENTATION
 
@@ -48,14 +48,35 @@ Perl as closely as possible.
 
 =head1 PORTING CAVEATS
 
+=head2 Characters vs codepoints
+
 Since the Perl documentation mentions C<characters> rather than codepoints,
 C<length> will return the number of characters, as seen using Normalization
 Form Grapheme (NFG).
+
+=head2 Handling of type objects
 
 C<length> in Perl is supposed to return C<undef> when given C<undef>.  Since
 undefined values are type objects in Raku, and it looks like C<length> is
 simply returning what it was given in the undefined case, it felt appropriate
 to simply return the given type object rather than C<Nil>.
+
+=head2 $_ no longer accessible from caller's scope
+
+In future language versions of Raku, it will become impossible to access the
+C<$_> variable of the caller's scope, because it will not have been marked as
+a dynamic variable.  So please consider changing:
+
+    length;
+
+to either:
+
+    length($_);
+
+or, using the subroutine as a method syntax, with the prefix C<.> shortcut
+to use that scope's C<$_> as the invocant:
+
+    .&length;
 
 =head1 AUTHOR
 
@@ -66,10 +87,12 @@ Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018-2019 Elizabeth Mattijsen
+Copyright 2018-2020 Elizabeth Mattijsen
 
 Re-imagined from Perl as part of the CPAN Butterfly Plan.
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
 =end pod
+
+# vim: expandtab shiftwidth=4

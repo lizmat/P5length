@@ -1,7 +1,7 @@
 NAME
 ====
 
-P5length - Implement Perl's length() built-in
+Raku port of Perl's length() built-in
 
 SYNOPSIS
 ========
@@ -17,7 +17,7 @@ SYNOPSIS
 DESCRIPTION
 ===========
 
-This module tries to mimic the behaviour of the `length` function of Perl as closely as possible.
+This module tries to mimic the behaviour of Perl's `length` built-in as closely as possible in the Raku Programming Language.
 
 ORIGINAL PERL 5 DOCUMENTATION
 =============================
@@ -40,9 +40,30 @@ ORIGINAL PERL 5 DOCUMENTATION
 PORTING CAVEATS
 ===============
 
+Characters vs codepoints
+------------------------
+
 Since the Perl documentation mentions `characters` rather than codepoints, `length` will return the number of characters, as seen using Normalization Form Grapheme (NFG).
 
+Handling of type objects
+------------------------
+
 `length` in Perl is supposed to return `undef` when given `undef`. Since undefined values are type objects in Raku, and it looks like `length` is simply returning what it was given in the undefined case, it felt appropriate to simply return the given type object rather than `Nil`.
+
+$_ no longer accessible from caller's scope
+-------------------------------------------
+
+In future language versions of Raku, it will become impossible to access the `$_` variable of the caller's scope, because it will not have been marked as a dynamic variable. So please consider changing:
+
+    length;
+
+to either:
+
+    length($_);
+
+or, using the subroutine as a method syntax, with the prefix `.` shortcut to use that scope's `$_` as the invocant:
+
+    .&length;
 
 AUTHOR
 ======
@@ -54,7 +75,7 @@ Source can be located at: https://github.com/lizmat/P5length . Comments and Pull
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2018-2019 Elizabeth Mattijsen
+Copyright 2018-2020 Elizabeth Mattijsen
 
 Re-imagined from Perl as part of the CPAN Butterfly Plan.
 
