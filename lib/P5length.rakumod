@@ -1,9 +1,7 @@
-use v6.*;
-
-unit module P5length:ver<0.0.7>:auth<zef:lizmat>;
+use v6.d;
 
 proto sub length(|) is export {*}
-multi sub length(--> Int:D) { length(CALLERS::<$_>) }
+multi sub length(--> Int:D) { length(CALLER::LEXICAL::<$_>) }
 multi sub length(Any:U $type) { $type }
 multi sub length(Any:D $string --> Int:D) { length($string.Str) }
 multi sub length(Str:D $string --> Int:D) { $string.chars }
@@ -82,12 +80,16 @@ to use that scope's C<$_> as the invocant:
 
 Elizabeth Mattijsen <liz@raku.rocks>
 
+If you like this module, or what I’m doing more generally, committing to a
+L<small sponsorship|https://github.com/sponsors/lizmat/>  would mean a great
+deal to me!
+
 Source can be located at: https://github.com/lizmat/P5length . Comments and
 Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018, 2019, 2020, 2021 Elizabeth Mattijsen
+Copyright 2018, 2019, 2020, 2021, 2023 Elizabeth Mattijsen
 
 Re-imagined from Perl as part of the CPAN Butterfly Plan.
 

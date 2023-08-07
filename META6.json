@@ -10,7 +10,7 @@
   "description": "Raku port of Perl's length() built-in",
   "license": "Artistic-2.0",
   "name": "P5length",
-  "perl": "6.c",
+  "perl": "6.d",
   "provides": {
     "P5length": "lib/P5length.rakumod"
   },
@@ -23,5 +23,5 @@
   ],
   "test-depends": [
   ],
-  "version": "0.0.7"
+  "version": "0.0.8"
 }
