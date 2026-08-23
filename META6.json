@@ -3,25 +3,23 @@
   "authors": [
     "Elizabeth Mattijsen"
   ],
-  "build-depends": [
-  ],
   "depends": [
   ],
   "description": "Raku port of Perl's length() built-in",
   "license": "Artistic-2.0",
   "name": "P5length",
-  "perl": "6.d",
   "provides": {
     "P5length": "lib/P5length.rakumod"
   },
-  "resources": [
-  ],
-  "source-url": "https://github.com/lizmat/P5length.git",
+  "raku": "6.d",
+  "support": {
+    "bugtracker": "https://github.com/lizmat/P5length/issues",
+    "email": "liz@raku.rocks",
+    "source": "https://github.com/lizmat/P5length.git"
+  },
   "tags": [
     "PERL5",
-    "CPAN5"
-  ],
-  "test-depends": [
+    "CPAN5", "LENGTH"
   ],
   "version": "0.0.8"
 }

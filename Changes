@@ -1,6 +1,12 @@
 Revision history for P5length
 
 {{$NEXT}}
+    - No longer support using the caller's topic variable
+    - Modernize META and documentation
+    - Add full coverage testing
+    - Add CI badge for each OS
+    - Add funding information
+    - Update copyright year
 
 0.0.8  2023-08-07T19:42:39+02:00
     - Update test file extension
