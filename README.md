@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/lizmat/P5length/workflows/test/badge.svg)](https://github.com/lizmat/P5length/actions)
+[![Actions Status](https://github.com/lizmat/P5length/actions/workflows/linux.yml/badge.svg)](https://github.com/lizmat/P5length/actions) [![Actions Status](https://github.com/lizmat/P5length/actions/workflows/macos.yml/badge.svg)](https://github.com/lizmat/P5length/actions) [![Actions Status](https://github.com/lizmat/P5length/actions/workflows/windows.yml/badge.svg)](https://github.com/lizmat/P5length/actions)
 
 NAME
 ====
@@ -8,13 +8,15 @@ Raku port of Perl's length() built-in
 SYNOPSIS
 ========
 
-    use P5length; # exports length()
+```raku
+use P5length; # exports length()
 
-    say length("foobar"); # 6
-    say length(Str);      # Str
+say length("foobar"); # 6
+say length(Str);      # Str
 
-    $_ = "foobar";
-    say length;           # 6
+$_ = "foobar";
+say .length;           # 6
+```
 
 DESCRIPTION
 ===========
@@ -55,31 +57,37 @@ Handling of type objects
 $_ no longer accessible from caller's scope
 -------------------------------------------
 
-In future language versions of Raku, it will become impossible to access the `$_` variable of the caller's scope, because it will not have been marked as a dynamic variable. So please consider changing:
+With the arrival of RakuAST, it has become impossible to access the topic variable (`$_`) of the caller's scope. So Perl's idiom of calling `length` without arguments has become impossible. Code such as:
 
-    length;
+```raku
+say length;
+```
 
-to either:
+should be changed to either:
 
-    length($_);
+```raku
+say length($_);
+```
 
 or, using the subroutine as a method syntax, with the prefix `.` shortcut to use that scope's `$_` as the invocant:
 
-    .&length;
+```raku
+say .&length;
+```
 
 AUTHOR
 ======
 
 Elizabeth Mattijsen <liz@raku.rocks>
 
-If you like this module, or what I’m doing more generally, committing to a [small sponsorship](https://github.com/sponsors/lizmat/) would mean a great deal to me!
-
 Source can be located at: https://github.com/lizmat/P5length . Comments and Pull Requests are welcome.
+
+If you like this module, or what I’m doing more generally, committing to a [small sponsorship](https://github.com/sponsors/lizmat/) would mean a great deal to me!
 
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2018, 2019, 2020, 2021, 2023 Elizabeth Mattijsen
+Copyright 2018, 2019, 2020, 2021, 2023, 2026 Elizabeth Mattijsen
 
 Re-imagined from Perl as part of the CPAN Butterfly Plan.
 

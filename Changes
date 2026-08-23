@@ -1,6 +1,8 @@
 Revision history for P5length
 
 {{$NEXT}}
+
+0.0.9  2026-08-24T01:06:15+02:00
     - No longer support using the caller's topic variable
     - Modernize META and documentation
     - Add full coverage testing
